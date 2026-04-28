@@ -34,3 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Visual Safety Checks
+
+Use these commands when refactoring UI:
+
+```bash
+npm run visual:guard
+```
+
+Validates critical visual class contracts (fast smoke check).
+
+```bash
+npm run visual:test:update
+```
+
+Creates or updates baseline screenshots for visual regression.
+
+```bash
+npm run visual:test
+```
+
+Compares current UI against committed screenshot baselines.
+
+Catatan: update baseline snapshot di platform yang sama dengan runner CI (saat ini Windows) agar suffix file snapshot konsisten.
