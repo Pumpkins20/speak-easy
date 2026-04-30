@@ -1,0 +1,1651 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SpeakEasy AI — Belajar Bahasa Inggris Lewat Percakapan</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            @font-face {
+                font-family: "Ogelo";
+                src: url("./public/fonts/ogelo-demo/Ogelo\ DEMO.otf") format("truetype");
+                font-display: swap;
+            }
+
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                
+                /* --bg: #fff7de; 
+                --bg-2: #ffffff; 
+                --bg-3: #eaf7ff; 
+
+                --text: #1f2a44;
+                --text-2: #4e5d78;
+                --text-3: #7a87a1;
+
+                
+                --accent: #ff7a59; 
+                --accent-blue: #3f8cff; 
+                --accent-green: #45b98a; 
+                --accent-purple: #8b6dff; 
+
+                --accent-dim: rgba(255, 122, 89, 0.16);
+                --blue: #3f8cff;
+                --blue-dim: rgba(63, 140, 255, 0.16);
+                --red: #e5534b;
+                --bg-4: #dbe8ff; */
+
+
+
+                /* --bg: #fff6d9;
+                --bg-2: #ffffff;
+                --bg-3: #e8f7ff;
+
+                --text: #1c2740;
+                --text-2: #485878;
+                --text-3: #7282a3;
+
+                --accent: #ff6f4d;
+                --accent-blue: #2e8bff;
+                --accent-green: #35c38a;
+                --accent-purple: #7f64ff;
+
+                --accent-dim: rgba(255, 111, 77, 0.16);
+                --blue: #2e8bff;
+                --blue-dim: rgba(46, 139, 255, 0.16);
+                --red: #ea4f47;
+                --bg-4: #d3e5ff; */
+
+
+
+                /* --bg: #fff9ec;
+                --bg-2: #ffffff;
+                --bg-3: #ecfff6;
+
+                --text: #23314d;
+                --text-2: #566685;
+                --text-3: #8591ac;
+
+                --accent: #ff8a61;
+                --accent-blue: #5f9dff;
+                --accent-green: #58be95;
+                --accent-purple: #9a7bff;
+
+                --accent-dim: rgba(255, 138, 97, 0.16);
+                --blue: #5f9dff;
+                --blue-dim: rgba(95, 157, 255, 0.16);
+                --red: #e8645a;
+                --bg-4: #e7dcff; */
+
+
+                --bg: #fdf4e7;
+                --bg-2: #fffefb;
+                --bg-3: #e8f2ff;
+
+                --text: #2d2440;
+                --text-2: #615377;
+                --text-3: #8c7ea4;
+
+                --accent: #ff7b72;
+                --accent-blue: #4b86f0;
+                --accent-green: #5fbf78;
+                --accent-purple: #a271d9;
+
+                --accent-dim: rgba(255, 123, 114, 0.16);
+                --blue: #4b86f0;
+                --blue-dim: rgba(75, 134, 240, 0.16);
+                --red: #da5555;
+                --bg-4: #e4d7c5;
+                     
+                /* Border & Glassmorphism */
+                --border: rgba(31, 42, 68, 0.12);
+                --border-strong: #1f2a44;
+                --neo-shadow: 5px 5px 0 rgba(31, 42, 68, 0.2);
+                --neo-shadow-soft: 3px 3px 0 rgba(31, 42, 68, 0.17);
+
+                /* Typography */
+                --serif: "DM Serif Display", Georgia, serif;
+                --brand-font: "Ogelo";
+                --sans: "DM Sans", system-ui, sans-serif;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: var(--sans);
+                font-size: 16px;
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                overflow-x: hidden;
+            }
+
+            /* NAV */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                padding: 0 40px;
+                height: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid var(--border);
+                background: rgba(249, 247, 242, 0.8);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
+
+            .nav-logo {
+                font-family: "Ogelo";
+                font-size: 20px;
+                color: var(--text);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .nav-logo-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--accent);
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 0.5;
+                    transform: scale(0.8);
+                }
+            }
+
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 32px;
+                list-style: none;
+            }
+
+            .nav-links a {
+                color: var(--text-2);
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 400;
+                transition: color 0.2s;
+            }
+            .nav-links a:hover {
+                color: var(--text);
+            }
+
+            .nav-cta {
+                background: var(--accent) !important;
+                color: #0a0a0b !important;
+                padding: 8px 20px;
+                border-radius: 100px;
+                font-weight: 500 !important;
+                font-size: 14px !important;
+                transition: opacity 0.2s !important;
+            }
+            .nav-cta:hover {
+                opacity: 0.85 !important;
+            }
+
+            /* HERO */
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 120px 40px 80px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero-content {
+                width: 100%;
+                max-width: 920px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-glow {
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 600px;
+                height: 600px;
+                background: radial-gradient(
+                    circle,
+                    rgba(180, 92, 61, 0.05) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 6px 16px;
+                border: 1px solid var(--border);
+                border-radius: 100px;
+                font-size: 13px;
+                color: var(--text-2);
+                margin-bottom: 40px;
+                background: var(--bg-3);
+                animation: fadeUp 0.8s ease both;
+            }
+
+            .brand-reveal {
+                position: absolute;
+                top: 112px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-family: var(--brand-font);
+                font-size: clamp(56px, 10vw, 128px);
+                line-height: 1;
+                color: var(--accent);
+                white-space: nowrap;
+                pointer-events: none;
+                opacity: 0;
+                animation: revealBrand 3.8s cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+                text-shadow: 3px 3px 0 rgba(42, 42, 42, 0.1);
+            }
+
+            .hero-badge-dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--accent);
+            }
+
+            .hero-title {
+                font-family: var(--serif);
+                font-size: clamp(52px, 8vw, 96px);
+                line-height: 1;
+                letter-spacing: -0.02em;
+                color: var(--text);
+                margin-bottom: 28px;
+                animation: fadeUp 0.8s ease 2.2s both;
+                max-width: 900px;
+                text-transform: lowercase;
+            }
+
+            .hero-title em {
+                font-style: italic;
+                color: var(--accent);
+            }
+
+            .hero-highlight {
+                position: relative;
+                display: inline-block;
+                padding: 0 0.08em;
+                z-index: 0;
+            }
+
+            .hero-highlight::before {
+                content: "";
+                position: absolute;
+                left: -0.03em;
+                right: -0.03em;
+                top: 62%;
+                height: 0.45em;
+                border-radius: 0.15em;
+                z-index: -1;
+                background: linear-gradient(
+                    92deg,
+                    rgba(91, 141, 239, 0.32),
+                    rgba(137, 179, 116, 0.32)
+                );
+                transform: rotate(-1.4deg);
+            }
+
+            .hero-sub {
+                font-size: 18px;
+                color: var(--text-2);
+                max-width: 480px;
+                font-weight: 300;
+                margin-bottom: 48px;
+                animation: fadeUp 0.8s ease 2.35s both;
+                line-height: 1.7;
+            }
+
+            .hero-actions {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                animation: fadeUp 0.8s ease 2.5s both;
+            }
+
+            .btn-primary {
+                background: var(--accent);
+                color: #0a0a0b;
+                padding: 14px 32px;
+                border-radius: 100px;
+                font-size: 15px;
+                font-weight: 500;
+                text-decoration: none;
+                font-family: var(--sans);
+                transition:
+                    opacity 0.2s,
+                    transform 0.2s,
+                    box-shadow 0.2s;
+                cursor: pointer;
+                border: 2px solid var(--border-strong);
+                box-shadow: var(--neo-shadow-soft);
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .btn-primary:hover {
+                opacity: 0.85;
+                transform: translate(-1px, -1px);
+                box-shadow: var(--neo-shadow);
+            }
+
+            .btn-ghost {
+                color: var(--text-2);
+                padding: 14px 24px;
+                border-radius: 100px;
+                font-size: 15px;
+                text-decoration: none;
+                font-family: var(--sans);
+                transition: color 0.2s;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .btn-ghost:hover {
+                color: var(--text);
+            }
+
+            /* DEMO WIDGET */
+            .hero-demo {
+                margin-top: 80px;
+                width: 100%;
+                max-width: 760px;
+                animation: fadeUp 0.8s ease 0.4s both;
+            }
+
+            .demo-card {
+                background: var(--bg-2);
+                border: 2px solid var(--border-strong);
+                border-radius: 24px;
+                overflow: hidden;
+                box-shadow: var(--neo-shadow);
+            }
+
+            .demo-topbar {
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .demo-dots {
+                display: flex;
+                gap: 6px;
+            }
+
+            .demo-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--bg-4);
+            }
+
+            .demo-title {
+                font-size: 13px;
+                color: var(--text-3);
+                font-weight: 400;
+                margin-left: 8px;
+            }
+
+            .demo-status {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 12px;
+                color: var(--accent);
+            }
+
+            .demo-status-dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--accent);
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+
+            .demo-body {
+                padding: 32px 28px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .demo-topic-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: var(--accent-dim);
+                border: 1px solid rgba(200, 240, 117, 0.2);
+                color: var(--accent);
+                padding: 6px 14px;
+                border-radius: 100px;
+                font-size: 12px;
+                font-weight: 500;
+                width: fit-content;
+            }
+
+            .chat-bubble {
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .chat-bubble.user {
+                flex-direction: row-reverse;
+            }
+
+            .avatar {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 13px;
+                font-weight: 500;
+            }
+
+            .avatar-ai {
+                background: var(--accent-dim);
+                color: var(--accent);
+                border: 1px solid rgba(200, 240, 117, 0.2);
+            }
+
+            .avatar-user {
+                background: var(--blue-dim);
+                color: var(--blue);
+                border: 1px solid rgba(91, 141, 239, 0.2);
+            }
+
+            .bubble-content {
+                max-width: 80%;
+            }
+
+            .bubble-name {
+                font-size: 11px;
+                color: var(--text-3);
+                margin-bottom: 6px;
+            }
+            .chat-bubble.user .bubble-name {
+                text-align: right;
+            }
+
+            .bubble {
+                padding: 12px 16px;
+                border-radius: 16px;
+                font-size: 14px;
+                line-height: 1.55;
+            }
+
+            .bubble-ai {
+                background: var(--bg-3);
+                border: 1px solid var(--border);
+                color: var(--text);
+                border-top-left-radius: 4px;
+            }
+
+            .bubble-user {
+                background: var(--blue-dim);
+                border: 1px solid rgba(91, 141, 239, 0.15);
+                color: var(--text);
+                border-top-right-radius: 4px;
+            }
+
+            .correction-box {
+                background: rgba(232, 104, 90, 0.08);
+                border: 1px solid rgba(232, 104, 90, 0.2);
+                border-radius: 12px;
+                padding: 12px 16px;
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .correction-icon {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: rgba(232, 104, 90, 0.15);
+                color: var(--red);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+
+            .correction-text {
+                flex: 1;
+            }
+
+            .correction-label {
+                font-size: 11px;
+                color: var(--red);
+                font-weight: 500;
+                margin-bottom: 4px;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+            }
+
+            .correction-detail {
+                font-size: 13px;
+                color: var(--text-2);
+                line-height: 1.5;
+            }
+
+            .correction-detail strong {
+                color: var(--text);
+            }
+
+            .demo-mic {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                padding: 20px 0 4px;
+                border-top: 1px solid var(--border);
+                margin-top: 8px;
+            }
+
+            .mic-btn {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                background: var(--accent);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                position: relative;
+                transition: transform 0.2s;
+            }
+            .mic-btn:hover {
+                transform: scale(1.05);
+            }
+
+            .mic-btn::before {
+                content: "";
+                position: absolute;
+                inset: -6px;
+                border-radius: 50%;
+                border: 1.5px solid rgba(200, 240, 117, 0.3);
+                animation: ripple 2s ease-in-out infinite;
+            }
+
+            @keyframes ripple {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(1.4);
+                    opacity: 0;
+                }
+            }
+
+            .mic-icon {
+                width: 20px;
+                height: 20px;
+                color: #0a0a0b;
+            }
+
+            .waveform {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                height: 32px;
+            }
+
+            .wave-bar {
+                width: 3px;
+                border-radius: 2px;
+                background: var(--text-3);
+                animation: wave 1.2s ease-in-out infinite;
+            }
+
+            .wave-bar:nth-child(1) {
+                height: 8px;
+                animation-delay: 0s;
+            }
+            .wave-bar:nth-child(2) {
+                height: 20px;
+                animation-delay: 0.1s;
+            }
+            .wave-bar:nth-child(3) {
+                height: 14px;
+                animation-delay: 0.2s;
+            }
+            .wave-bar:nth-child(4) {
+                height: 26px;
+                animation-delay: 0.3s;
+                background: var(--accent);
+            }
+            .wave-bar:nth-child(5) {
+                height: 18px;
+                animation-delay: 0.4s;
+                background: var(--accent);
+            }
+            .wave-bar:nth-child(6) {
+                height: 30px;
+                animation-delay: 0.5s;
+                background: var(--accent);
+            }
+            .wave-bar:nth-child(7) {
+                height: 22px;
+                animation-delay: 0.4s;
+                background: var(--accent);
+            }
+            .wave-bar:nth-child(8) {
+                height: 16px;
+                animation-delay: 0.3s;
+            }
+            .wave-bar:nth-child(9) {
+                height: 10px;
+                animation-delay: 0.2s;
+            }
+            .wave-bar:nth-child(10) {
+                height: 6px;
+                animation-delay: 0.1s;
+            }
+
+            @keyframes wave {
+                0%,
+                100% {
+                    transform: scaleY(1);
+                }
+                50% {
+                    transform: scaleY(0.4);
+                }
+            }
+
+            /* SECTIONS */
+            section {
+                padding: 120px 40px;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+
+            .section-label {
+                font-size: 12px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--accent);
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-family: var(--serif);
+                font-size: clamp(36px, 5vw, 60px);
+                line-height: 1.05;
+                letter-spacing: -0.02em;
+                color: var(--text);
+                margin-bottom: 20px;
+            }
+
+            .section-sub {
+                font-size: 17px;
+                color: var(--text-2);
+                font-weight: 300;
+                line-height: 1.7;
+                max-width: 520px;
+            }
+
+            /* HOW IT WORKS */
+            .how-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2px;
+                margin-top: 64px;
+                border: 1px solid var(--border);
+                border-radius: 24px;
+                overflow: hidden;
+                background: var(--border);
+            }
+
+            .how-item {
+                background: var(--bg-2);
+                padding: 40px 36px;
+                position: relative;
+                border: 1px solid rgba(42, 42, 42, 0.1);
+            }
+
+            .how-num {
+                font-family: var(--serif);
+                font-size: 48px;
+                color: var(--bg-4);
+                line-height: 1;
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            .how-title {
+                font-size: 18px;
+                font-weight: 500;
+                color: var(--text);
+                margin-bottom: 10px;
+            }
+
+            .how-desc {
+                font-size: 14px;
+                color: var(--text-2);
+                line-height: 1.65;
+                font-weight: 300;
+            }
+
+            .how-icon-pill {
+                position: absolute;
+                top: 36px;
+                right: 36px;
+                background: var(--accent-dim);
+                border: 1px solid rgba(200, 240, 117, 0.15);
+                padding: 6px 12px;
+                border-radius: 100px;
+                font-size: 11px;
+                color: var(--accent);
+                font-weight: 500;
+            }
+
+            /* FEATURES BENTO */
+            .bento {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto auto;
+                gap: 2px;
+                margin-top: 64px;
+                border: 1px solid var(--border);
+                border-radius: 24px;
+                overflow: hidden;
+                background: var(--border);
+            }
+
+            .bento-item {
+                background: var(--bg-2);
+                padding: 36px 32px;
+                position: relative;
+                border: 1px solid rgba(42, 42, 42, 0.1);
+            }
+
+            .bento-item.wide {
+                grid-column: span 2;
+            }
+            .bento-item.tall {
+                grid-row: span 2;
+            }
+
+            .bento-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+
+            .bento-title {
+                font-size: 17px;
+                font-weight: 500;
+                color: var(--text);
+                margin-bottom: 8px;
+            }
+
+            .bento-desc {
+                font-size: 14px;
+                color: var(--text-2);
+                line-height: 1.65;
+                font-weight: 300;
+            }
+
+            /* STREAK VISUAL */
+            .streak-visual {
+                margin-top: 28px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .streak-row {
+                display: flex;
+                gap: 6px;
+                align-items: center;
+            }
+
+            .streak-cell {
+                width: 28px;
+                height: 28px;
+                border-radius: 6px;
+                background: var(--bg-4);
+                border: 1px solid var(--border);
+            }
+
+            .streak-cell.active {
+                background: var(--accent);
+                border-color: var(--accent);
+            }
+            .streak-cell.partial {
+                background: rgba(200, 240, 117, 0.35);
+                border-color: rgba(200, 240, 117, 0.3);
+            }
+
+            .streak-label {
+                font-size: 11px;
+                color: var(--text-3);
+                width: 24px;
+                text-align: right;
+                flex-shrink: 0;
+            }
+
+            .streak-count {
+                margin-top: 20px;
+                display: flex;
+                align-items: baseline;
+                gap: 8px;
+            }
+
+            .streak-num {
+                font-family: var(--serif);
+                font-size: 48px;
+                color: var(--accent);
+                line-height: 1;
+            }
+
+            .streak-unit {
+                font-size: 14px;
+                color: var(--text-2);
+            }
+
+            /* LEADERBOARD VISUAL */
+            .lb-list {
+                margin-top: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .lb-row {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 10px 14px;
+                border-radius: 10px;
+                background: var(--bg-3);
+            }
+
+            .lb-row.you {
+                background: var(--accent-dim);
+                border: 1px solid rgba(200, 240, 117, 0.15);
+            }
+
+            .lb-rank {
+                font-size: 13px;
+                color: var(--text-3);
+                width: 20px;
+                text-align: center;
+                flex-shrink: 0;
+            }
+
+            .lb-row.you .lb-rank {
+                color: var(--accent);
+            }
+
+            .lb-avatar {
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                background: var(--bg-4);
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                color: var(--text-2);
+            }
+
+            .lb-name {
+                font-size: 13px;
+                color: var(--text);
+                flex: 1;
+            }
+
+            .lb-score {
+                font-size: 12px;
+                color: var(--text-2);
+                font-weight: 500;
+                font-variant-numeric: tabular-nums;
+            }
+
+            .lb-row.you .lb-score {
+                color: var(--accent);
+            }
+
+            /* TOPIC MINI */
+            .topic-mini {
+                margin-top: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .topic-chip {
+                padding: 10px 14px;
+                border-radius: 10px;
+                background: var(--bg-3);
+                border: 1px solid var(--border);
+                font-size: 13px;
+                color: var(--text-2);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: border-color 0.2s;
+            }
+
+            .topic-chip.active {
+                background: var(--accent-dim);
+                border-color: rgba(200, 240, 117, 0.25);
+                color: var(--text);
+            }
+
+            .topic-chip-tag {
+                font-size: 10px;
+                padding: 2px 8px;
+                border-radius: 100px;
+                background: var(--accent-dim);
+                color: var(--accent);
+            }
+
+            /* CTA */
+            .cta-section {
+                padding: 120px 40px;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .cta-bg {
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(
+                    ellipse at center,
+                    rgba(200, 240, 117, 0.05) 0%,
+                    transparent 65%
+                );
+                pointer-events: none;
+            }
+
+            .cta-inner {
+                position: relative;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .cta-title {
+                font-family: var(--serif);
+                font-size: clamp(40px, 6vw, 72px);
+                line-height: 1.05;
+                letter-spacing: -0.02em;
+                color: var(--text);
+                margin-bottom: 20px;
+            }
+
+            .cta-title em {
+                font-style: italic;
+                color: var(--accent);
+            }
+
+            .cta-sub {
+                font-size: 16px;
+                color: var(--text-2);
+                margin-bottom: 40px;
+                font-weight: 300;
+            }
+
+            .cta-note {
+                margin-top: 20px;
+                font-size: 13px;
+                color: var(--text-3);
+            }
+
+            /* FOOTER */
+            footer {
+                border-top: 1px solid var(--border);
+                padding: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+
+            .footer-logo {
+                font-family: var(--serif);
+                font-size: 18px;
+                color: var(--text-2);
+            }
+
+            .footer-copy {
+                font-size: 13px;
+                color: var(--text-3);
+            }
+
+            /* SEPARATOR */
+            .full-sep {
+                border: none;
+                border-top: 1px solid var(--border);
+                margin: 0;
+            }
+
+            /* ANIMATIONS */
+            @keyframes fadeUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes revealBrand {
+                0% {
+                    opacity: 0;
+                    letter-spacing: 0.04em;
+                    transform: translateX(-50%) scale(1.04);
+                }
+                24% {
+                    opacity: 1;
+                    letter-spacing: 0.24em;
+                    transform: translateX(-50%) scale(1);
+                }
+                58% {
+                    opacity: 1;
+                    letter-spacing: 0.24em;
+                    transform: translateX(-50%) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    letter-spacing: 0.08em;
+                    transform: translate(-50%, 116px) scale(0.62);
+                }
+            }
+
+            .fade-in {
+                opacity: 0;
+                transform: translateY(24px);
+                transition:
+                    opacity 0.7s ease,
+                    transform 0.7s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* MOBILE */
+            @media (max-width: 768px) {
+                nav {
+                    padding: 0 20px;
+                }
+                .nav-links {
+                    display: none;
+                }
+                .brand-reveal {
+                    top: 140px;
+                }
+                section {
+                    padding: 80px 24px;
+                }
+                .how-grid {
+                    grid-template-columns: 1fr;
+                }
+                .bento {
+                    grid-template-columns: 1fr;
+                }
+                .bento-item.wide {
+                    grid-column: span 1;
+                }
+                footer {
+                    flex-direction: column;
+                    gap: 16px;
+                    text-align: center;
+                }
+                .hero {
+                    padding: 100px 24px 60px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav>
+            <a href="#" class="nav-logo">
+                <span class="nav-logo-dot"></span>
+                SpeakEasy
+            </a>
+            <ul class="nav-links">
+                <li><a href="#cara-kerja">Cara Kerja</a></li>
+                <li><a href="#fitur">Fitur</a></li>
+                <li><a href="#mulai" class="nav-cta">Mulai Gratis</a></li>
+            </ul>
+        </nav>
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-glow"></div>
+
+            <div class="hero-content">
+                <div class="brand-reveal" aria-hidden="true">SpeakEasy</div>
+
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Teman ngobrol bahasa Inggris yang selalu ada
+                </div>
+
+                <h1 class="hero-title">
+                    bicara.<br />
+                    <span class="hero-highlight">langsung lancar</span>.
+                </h1>
+
+                <p class="hero-sub">
+                    Latihan conversation bahasa Inggris bersama AI — kapan
+                    saja, tanpa rasa malu, tanpa biaya.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#mulai" class="btn-primary">
+                        Coba Sekarang — Gratis
+                        <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="#cara-kerja" class="btn-ghost">
+                        Lihat cara kerjanya
+                    </a>
+                </div>
+            </div>
+
+            <!-- DEMO CARD -->
+            <div class="hero-demo">
+                <div class="demo-card">
+                    <div class="demo-topbar">
+                        <div class="demo-dots">
+                            <div class="demo-dot"></div>
+                            <div class="demo-dot"></div>
+                            <div class="demo-dot"></div>
+                        </div>
+                        <span class="demo-title"
+                            >Sesi Conversation · Topik Harian</span
+                        >
+                        <div class="demo-status">
+                            <span class="demo-status-dot"></span>
+                            Live
+                        </div>
+                    </div>
+                    <div class="demo-body">
+                        <div class="demo-topic-pill">
+                            📅 Topik hari ini: Introducing yourself at work
+                        </div>
+
+                        <div class="chat-bubble">
+                            <div class="avatar avatar-ai">AI</div>
+                            <div class="bubble-content">
+                                <div class="bubble-name">SpeakEasy AI</div>
+                                <div class="bubble bubble-ai">
+                                    Hi! Let's practice introducing yourself.
+                                    Imagine it's your first day at a new office
+                                    — how would you introduce yourself to your
+                                    new colleagues?
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-bubble user">
+                            <div class="avatar avatar-user">K</div>
+                            <div class="bubble-content">
+                                <div class="bubble-name">Kamu</div>
+                                <div class="bubble bubble-user">
+                                    Hello everyone, my name is Kiko. I come from
+                                    Surakarta and I will work here as a designer
+                                    since last week.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="correction-box">
+                            <div class="correction-icon">!</div>
+                            <div class="correction-text">
+                                <div class="correction-label">
+                                    Koreksi Grammar
+                                </div>
+                                <div class="correction-detail">
+                                    <strong>"I will work here"</strong> →
+                                    <strong>"I have been working here"</strong>
+                                    — karena aktivitasnya sudah dimulai ("since
+                                    last week"), gunakan present perfect
+                                    continuous.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-bubble">
+                            <div class="avatar avatar-ai">AI</div>
+                            <div class="bubble-content">
+                                <div class="bubble-name">SpeakEasy AI</div>
+                                <div class="bubble bubble-ai">
+                                    Great start! Small correction noted above.
+                                    Your pronunciation is clear. Now try adding
+                                    what you're excited about in this new role!
+                                    🎉
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="demo-mic">
+                            <div class="waveform">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                            <div class="mic-btn">
+                                <svg
+                                    class="mic-icon"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v6a2 2 0 0 0 4 0V5a2 2 0 0 0-2-2zm7 7a1 1 0 0 1 1 1 8 8 0 0 1-7 7.93V21h2a1 1 0 0 1 0 2H9a1 1 0 0 1 0-2h2v-2.07A8 8 0 0 1 4 11a1 1 0 0 1 2 0 6 6 0 0 0 12 0 1 1 0 0 1 1-1z"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="waveform" style="transform: scaleX(-1)">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="full-sep" />
+
+        <!-- HOW IT WORKS -->
+        <section id="cara-kerja">
+            <div class="fade-in">
+                <div class="section-label">Cara Kerja</div>
+                <h2 class="section-title">Sesederhana<br />ngobrol biasa.</h2>
+                <p class="section-sub">
+                    Tidak ada tes, tidak ada registrasi dulu. Buka, pilih topik,
+                    dan langsung bicara.
+                </p>
+            </div>
+
+            <div class="how-grid fade-in">
+                <div class="how-item">
+                    <span class="how-num">01</span>
+                    <div class="how-icon-pill">Gratis</div>
+                    <div class="how-title">Buka langsung, tanpa daftar</div>
+                    <div class="how-desc">
+                        Tidak perlu akun dulu. Langsung masuk dan mulai sesi
+                        percakapan pertamamu dalam hitungan detik.
+                    </div>
+                </div>
+                <div class="how-item">
+                    <span class="how-num">02</span>
+                    <div class="how-icon-pill">AI Personal</div>
+                    <div class="how-title">AI pilihkan topik untukmu</div>
+                    <div class="how-desc">
+                        Setiap hari AI memilihkan topik yang berbeda berdasarkan
+                        history percakapanmu. Makin sering pakai, makin personal
+                        rekomendasinya.
+                    </div>
+                </div>
+                <div class="how-item">
+                    <span class="how-num">03</span>
+                    <div class="how-icon-pill">Voice</div>
+                    <div class="how-title">Bicara, bukan mengetik</div>
+                    <div class="how-desc">
+                        Kamu bicara via mikrofon, AI mendengarkan dan merespons
+                        dengan suara. Persis seperti percakapan sungguhan.
+                    </div>
+                </div>
+                <div class="how-item">
+                    <span class="how-num">04</span>
+                    <div class="how-icon-pill">Real-time</div>
+                    <div class="how-title">
+                        Koreksi langsung, bukan di akhir
+                    </div>
+                    <div class="how-desc">
+                        Setiap kali kamu selesai 1 kalimat, koreksi grammar
+                        muncul otomatis dengan penjelasan dalam Bahasa
+                        Indonesia. Belajar sambil jalan.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="full-sep" />
+
+        <!-- FEATURES BENTO -->
+        <section id="fitur">
+            <div class="fade-in">
+                <div class="section-label">Fitur</div>
+                <h2 class="section-title">
+                    Semua yang kamu<br />butuhkan untuk lancar.
+                </h2>
+            </div>
+
+            <div class="bento fade-in">
+                <!-- Streak -->
+                <div class="bento-item tall">
+                    <div
+                        class="bento-icon"
+                        style="
+                            background: var(--accent-dim);
+                            color: var(--accent);
+                        "
+                    >
+                        🔥
+                    </div>
+                    <div class="bento-title">Streak & Progress</div>
+                    <div class="bento-desc">
+                        Bangun kebiasaan belajar harian. Streak-mu tercatat dan
+                        menantangmu untuk terus konsisten.
+                    </div>
+
+                    <div class="streak-visual">
+                        <div class="streak-row">
+                            <span class="streak-label">Sen</span>
+                            <div class="streak-cell active"></div>
+                            <div class="streak-cell active"></div>
+                            <div class="streak-cell active"></div>
+                            <div class="streak-cell active"></div>
+                            <div class="streak-cell partial"></div>
+                            <div class="streak-cell"></div>
+                            <div class="streak-cell"></div>
+                        </div>
+                        <div class="streak-row">
+                            <span class="streak-label">Min</span>
+                            <div class="streak-cell active"></div>
+                            <div class="streak-cell active"></div>
+                            <div class="streak-cell active"></div>
+                            <div class="streak-cell partial"></div>
+                            <div class="streak-cell"></div>
+                            <div class="streak-cell"></div>
+                            <div class="streak-cell"></div>
+                        </div>
+                    </div>
+
+                    <div class="streak-count">
+                        <span class="streak-num">12</span>
+                        <span class="streak-unit">hari berturut-turut</span>
+                    </div>
+                </div>
+
+                <!-- Topik AI -->
+                <div class="bento-item wide">
+                    <div
+                        class="bento-icon"
+                        style="background: var(--blue-dim); color: var(--blue)"
+                    >
+                        🎯
+                    </div>
+                    <div class="bento-title">Topik Harian yang Personal</div>
+                    <div class="bento-desc">
+                        AI memilih topik berbeda setiap hari khusus untukmu —
+                        berdasarkan apa yang sudah kamu pelajari dan area yang
+                        perlu diperkuat.
+                    </div>
+
+                    <div class="topic-mini">
+                        <div class="topic-chip active">
+                            Introducing yourself at work
+                            <span class="topic-chip-tag">Hari ini</span>
+                        </div>
+                        <div class="topic-chip">
+                            Ordering food at a restaurant
+                            <span class="topic-chip-tag">Kemarin</span>
+                        </div>
+                        <div class="topic-chip">
+                            Asking for directions
+                            <span class="topic-chip-tag">3 hari lalu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grammar -->
+                <div class="bento-item">
+                    <div
+                        class="bento-icon"
+                        style="
+                            background: rgba(232, 104, 90, 0.1);
+                            color: var(--red);
+                        "
+                    >
+                        ✗→✓
+                    </div>
+                    <div class="bento-title">Koreksi Grammar Instan</div>
+                    <div class="bento-desc">
+                        Selesai 1 kalimat, koreksi langsung muncul. Penjelasan
+                        dalam Bahasa Indonesia, jelas dan tidak menggurui.
+                    </div>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="bento-item">
+                    <div
+                        class="bento-icon"
+                        style="
+                            background: rgba(255, 200, 80, 0.1);
+                            color: #e8b84b;
+                        "
+                    >
+                        🏆
+                    </div>
+                    <div class="bento-title">Leaderboard Global</div>
+                    <div class="bento-desc">
+                        Bersaing dengan pelajar dari seluruh Indonesia. Weekly
+                        reset setiap Senin — semua punya kesempatan yang sama.
+                    </div>
+
+                    <div class="lb-list">
+                        <div class="lb-row">
+                            <span class="lb-rank">1</span>
+                            <div class="lb-avatar">RS</div>
+                            <span class="lb-name">Rizky S.</span>
+                            <span class="lb-score">1.240 poin</span>
+                        </div>
+                        <div class="lb-row">
+                            <span class="lb-rank">2</span>
+                            <div class="lb-avatar">AN</div>
+                            <span class="lb-name">Ayu N.</span>
+                            <span class="lb-score">1.180 poin</span>
+                        </div>
+                        <div class="lb-row you">
+                            <span class="lb-rank">7</span>
+                            <div
+                                class="lb-avatar"
+                                style="
+                                    background: var(--accent-dim);
+                                    color: var(--accent);
+                                "
+                            >
+                                K
+                            </div>
+                            <span class="lb-name">Kamu</span>
+                            <span class="lb-score">870 poin</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voice -->
+                <div class="bento-item wide">
+                    <div
+                        class="bento-icon"
+                        style="
+                            background: var(--accent-dim);
+                            color: var(--accent);
+                        "
+                    >
+                        🎙
+                    </div>
+                    <div class="bento-title">
+                        Voice First — Bicara, Bukan Mengetik
+                    </div>
+                    <div class="bento-desc">
+                        Interaksi utama lewat suara. AI merespons dengan suara
+                        yang natural. Karena speaking skill hanya bisa diasah
+                        dengan speaking sungguhan — bukan dengan mengisi pilihan
+                        ganda.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="full-sep" />
+
+        <!-- CTA -->
+        <div class="cta-section" id="mulai">
+            <div class="cta-bg"></div>
+            <div class="cta-inner fade-in">
+                <div class="section-label" style="margin-bottom: 24px">
+                    Mulai Sekarang
+                </div>
+                <h2 class="cta-title">
+                    Conversation<br />pertamamu.<br /><em>Hari ini.</em>
+                </h2>
+                <p class="cta-sub">
+                    Tidak perlu daftar. Tidak perlu download. Buka browser, dan
+                    langsung bicara.
+                </p>
+                <a
+                    href="#"
+                    class="btn-primary"
+                    style="font-size: 16px; padding: 16px 40px"
+                >
+                    Mulai Gratis — Tanpa Daftar
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <p class="cta-note">
+                    Gratis selamanya untuk fitur dasar · Tidak perlu kartu
+                    kredit
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <hr class="full-sep" />
+        <footer>
+            <span class="footer-logo">SpeakEasy AI</span>
+            <span class="footer-copy"
+                >© 2026 SpeakEasy AI · Dibuat dengan ♥ di Indonesia</span
+            >
+        </footer>
+
+        <script>
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry, i) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(
+                                () => entry.target.classList.add("visible"),
+                                i * 80,
+                            );
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+
+            document
+                .querySelectorAll(".fade-in")
+                .forEach((el) => observer.observe(el));
+        </script>
+    </body>
+</html>
