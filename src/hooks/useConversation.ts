@@ -59,6 +59,7 @@ export function useConversation(model: ConversationScreenModel) {
   } = useSpeechToText("en-US");
 
   const [messages, setMessages] = useState<ConversationMessage[]>(model.messages);
+  const [activeTopicId, setActiveTopicId] = useState(model.activeTopic.id);
   const [activeTopicTitle, setActiveTopicTitle] = useState(model.activeTopic.title);
   const [correction, setCorrection] = useState<GrammarCorrection | null>(
     model.correction,
@@ -90,6 +91,7 @@ export function useConversation(model: ConversationScreenModel) {
       }));
       const payload: RealtimeConversationRequestPayload = {
         mode: model.mode,
+        topicId: activeTopicId,
         topicTitle: activeTopicTitle,
         userText: sentence,
         history: historyPayload,
@@ -144,7 +146,7 @@ export function useConversation(model: ConversationScreenModel) {
         setIsSubmitting(false);
       }
     },
-    [activeTopicTitle, messages, model.mode],
+    [activeTopicId, activeTopicTitle, messages, model.mode],
   );
 
   const submitDraftTranscript = useCallback(() => {
@@ -155,6 +157,12 @@ export function useConversation(model: ConversationScreenModel) {
   }, [draftTranscript, setTranscript, stopListening, submitUserSentence]);
 
   const selectTopic = useCallback((title: string) => {
+    const selected = model.topicRecommendations.find((item) => item.title === title);
+
+    if (selected?.topicId) {
+      setActiveTopicId(selected.topicId);
+    }
+
     setActiveTopicTitle(title);
     setCorrection(null);
     setSubmitError(null);
@@ -167,7 +175,7 @@ export function useConversation(model: ConversationScreenModel) {
         `Topik baru dipilih: ${title}. Mulai dengan satu kalimat perkenalan tentang pengalamanmu.`,
       ),
     ]);
-  }, []);
+  }, [model.topicRecommendations]);
 
   const toggleListening = useCallback(() => {
     if (!isSupported) {

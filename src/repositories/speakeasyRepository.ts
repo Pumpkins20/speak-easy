@@ -2,6 +2,7 @@ import {
   getSupabaseRuntimeConfig,
   getSupabaseServerClient,
 } from "@/lib/supabase";
+import curriculumSeed from "@/docs/seeds/a1_curriculum.json";
 import { detectEstimatedLevel } from "@/services/levelDetectionService";
 import type {
   ConversationMessage,
@@ -39,9 +40,15 @@ export interface SpeakeasyRepository {
 }
 
 type UnknownRow = Record<string, unknown>;
+interface CurriculumTopicRow {
+  topic_id: string;
+  title: string;
+  objective: string;
+}
 
 const MAX_HISTORY_RECORDS = 120;
 const DEFAULT_USER_ID = process.env.SPEAKEASY_DEFAULT_USER_ID ?? "demo-user";
+const curriculumTopics = curriculumSeed as CurriculumTopicRow[];
 
 const topic: DailyTopic = {
   id: "topic-intro-work",
@@ -437,6 +444,37 @@ function mapDailyTopic(row: UnknownRow | null): DailyTopic {
   };
 }
 
+function getCompletedTopicIds(rows: UnknownRow[]): Set<string> {
+  const ids = rows
+    .map((row) => readString(row, "topic_id", "topicId"))
+    .filter((value): value is string => Boolean(value))
+    .map((value) => value.toLowerCase());
+
+  return new Set(ids);
+}
+
+function pickGuidedTopicFromCurriculum(completedTopicIds: Set<string>): DailyTopic | null {
+  const nextTopic = curriculumTopics.find((item) => {
+    return !completedTopicIds.has(item.topic_id.toLowerCase());
+  });
+  const selected = nextTopic ?? curriculumTopics[0];
+
+  if (!selected) {
+    return null;
+  }
+
+  return {
+    id: selected.topic_id,
+    title: selected.title,
+    category: "daily-guided",
+    starterQuestions: [
+      `Let's practice: ${selected.title}.`,
+      selected.objective,
+      "Can you answer in 1-2 simple English sentences?",
+    ],
+  };
+}
+
 function mapTopicHistory(rows: UnknownRow[]): DailyTopicHistoryItem[] {
   if (rows.length === 0) {
     return topicHistory;
@@ -450,11 +488,18 @@ function mapTopicHistory(rows: UnknownRow[]): DailyTopicHistoryItem[] {
       relativeLabelFromDate(dateIso, index);
     const titleValue =
       readString(row, "title", "topic_title", "topic") ??
+      curriculumTopics.find(
+        (topicRow) =>
+          topicRow.topic_id.toLowerCase() ===
+          (readString(row, "topic_id", "topicId") ?? "").toLowerCase(),
+      )?.title ??
       `Topik ${index + 1}`;
+    const topicId = readString(row, "topic_id", "topicId");
     const isToday =
       readBoolean(row, "is_today", "isToday") ?? label === "Hari ini";
 
     return {
+      topicId,
       title: titleValue,
       label,
       isToday,
@@ -810,7 +855,9 @@ class SupabaseSpeakeasyRepository implements SpeakeasyRepository {
         fetchLeaderboardRows(),
       ]);
 
-      const activeTopic = mapDailyTopic(topicRow);
+      const completedTopicIds = getCompletedTopicIds(historyRows);
+      const activeTopic =
+        pickGuidedTopicFromCurriculum(completedTopicIds) ?? mapDailyTopic(topicRow);
       const leaderboardRows = mapLeaderboard(leaderboardRawRows, userId);
       const mappedHistory = mapTopicHistory(historyRows);
       const messagesFromTopic = buildMessagesFromTopic(activeTopic);

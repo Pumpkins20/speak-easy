@@ -1,0 +1,62 @@
+[
+  {
+    "level": "A1",
+    "unit": 1,
+    "topic_id": "a1_intro",
+    "title": "Greetings & Self-Introduction",
+    "objective": "Pengguna dapat menyapa dan memperkenalkan diri sendiri dengan informasi dasar.",
+    "target_grammar": [
+      "Verb 'to be' (am, is, are)",
+      "Subject Pronouns (I, you, he, she)"
+    ],
+    "target_vocabulary": [
+      "hello", "name", "from", "live", "work", "freelancer", "nice to meet you"
+    ],
+    "scenario_prompt": "Bertindaklah sebagai teman baru yang ramah. Mulailah percakapan dengan menyapa dan menanyakan nama user. Pandu user untuk menceritakan asal mereka dan pekerjaan mereka. Gunakan kalimat pendek dan kosakata dasar. Jika user melakukan kesalahan grammar pada verb 'to be', biarkan percakapan mengalir namun catat untuk koreksi di akhir."
+  },
+  {
+    "level": "A1",
+    "unit": 2,
+    "topic_id": "a1_daily_routine",
+    "title": "Daily Routine",
+    "objective": "Pengguna dapat menceritakan aktivitas keseharian mereka.",
+    "target_grammar": [
+      "Present Simple (I wake up, I work)",
+      "Time prepositions (at 8 AM, in the morning)"
+    ],
+    "target_vocabulary": [
+      "wake up", "eat", "start", "work", "computer", "sleep", "morning", "night"
+    ],
+    "scenario_prompt": "Bertindaklah sebagai rekan kerja atau teman. Tanyakan kepada user jam berapa mereka biasanya bangun dan mulai bekerja di depan komputer setiap hari. Pancing user untuk menggunakan present simple tense untuk mendeskripsikan rutinitas harian mereka."
+  },
+  {
+    "level": "A1",
+    "unit": 3,
+    "topic_id": "a1_cafe_order",
+    "title": "Ordering at a Cafe",
+    "objective": "Pengguna dapat memesan makanan atau minuman di tempat umum.",
+    "target_grammar": [
+      "Polite requests (I would like..., Can I have...)",
+      "Countable & Uncountable nouns basic (a coffee, some water)"
+    ],
+    "target_vocabulary": [
+      "coffee", "tea", "menu", "order", "price", "sugar", "milk", "please"
+    ],
+    "scenario_prompt": "Bertindaklah sebagai barista di sebuah kedai kopi. Sapa user dan tanyakan apa yang ingin mereka pesan hari ini. Pancing user untuk membuat pesanan menggunakan kalimat permintaan yang sopan. Sesuaikan respons Anda dengan apa yang user pesan."
+  },
+  {
+    "level": "A1",
+    "unit": 4,
+    "topic_id": "a1_likes_dislikes",
+    "title": "Likes and Dislikes",
+    "objective": "Pengguna dapat mengekspresikan preferensi dasar mereka.",
+    "target_grammar": [
+      "Verbs of preference (like, love, hate) + noun/gerund",
+      "Negative Present Simple (I do not like...)"
+    ],
+    "target_vocabulary": [
+      "like", "love", "hate", "food", "music", "movies", "coding", "travel"
+    ],
+    "scenario_prompt": "Bertindaklah sebagai teman yang sedang membicarakan hobi. Tanyakan kepada user apa kegiatan atau makanan yang mereka sukai dan tidak sukai. Jaga percakapan tetap ringan dan dorong user untuk menjelaskan alasan sederhana mengapa mereka menyukai sesuatu."
+  }
+]

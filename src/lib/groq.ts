@@ -31,12 +31,26 @@ export function getGroqRuntimeConfig(): GroqRuntimeConfig {
   };
 }
 
-export function buildSystemPrompt(mode: ConversationMode): string {
-  if (mode === "free") {
-    return "Kamu adalah partner conversation bahasa Inggris yang sabar. Gunakan Bahasa Indonesia untuk feedback, dan Bahasa Inggris untuk simulasi percakapan.";
+interface SystemPromptOptions {
+  scenarioPrompt?: string;
+}
+
+export function buildSystemPrompt(
+  mode: ConversationMode,
+  options: SystemPromptOptions = {},
+): string {
+  const basePrompt =
+    mode === "free"
+      ? "Kamu adalah partner conversation bahasa Inggris yang sabar. Gunakan Bahasa Indonesia untuk feedback, dan Bahasa Inggris untuk simulasi percakapan."
+      : "Kamu adalah tutor conversation bahasa Inggris untuk pemula Indonesia. Berikan topik terstruktur, koreksi grammar ringkas dalam Bahasa Indonesia, dan tone yang suportif.";
+
+  if (!options.scenarioPrompt) {
+    return basePrompt;
   }
 
-  return "Kamu adalah tutor conversation bahasa Inggris untuk pemula Indonesia. Berikan topik terstruktur, koreksi grammar ringkas dalam Bahasa Indonesia, dan tone yang suportif.";
+  return [basePrompt, `Skenario sesi (instruksi internal): ${options.scenarioPrompt}`].join(
+    "\n",
+  );
 }
 
 export async function requestGroqChatCompletion(

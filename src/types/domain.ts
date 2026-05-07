@@ -24,6 +24,7 @@ export interface DailyTopic {
 }
 
 export interface DailyTopicHistoryItem {
+  topicId?: string;
   title: string;
   label: string;
   isToday?: boolean;
@@ -95,14 +96,22 @@ export interface ConversationHistoryMessagePayload {
 
 export interface RealtimeConversationRequestPayload {
   mode: ConversationMode;
+  topicId?: string;
   topicTitle: string;
   userText: string;
   history: ConversationHistoryMessagePayload[];
 }
 
+export interface SessionGamification {
+  matchedVocabulary: string[];
+  bonusAwarded: boolean;
+  bonusPoints: number;
+}
+
 export interface RealtimeConversationResponsePayload {
   assistantMessage: string;
   correction: GrammarCorrection | null;
+  gamification: SessionGamification;
   source: "groq" | "fallback";
 }
 

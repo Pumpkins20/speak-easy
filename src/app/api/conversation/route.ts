@@ -44,6 +44,7 @@ function normalizePayload(
 
   const payload = body as {
     mode?: unknown;
+    topicId?: unknown;
     topicTitle?: unknown;
     userText?: unknown;
     history?: unknown;
@@ -64,6 +65,7 @@ function normalizePayload(
 
   return {
     mode: payload.mode,
+    topicId: typeof payload.topicId === "string" ? payload.topicId.trim() : undefined,
     topicTitle: payload.topicTitle.trim(),
     userText: payload.userText.trim(),
     history,
